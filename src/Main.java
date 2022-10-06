@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        OneYear one = new OneYear();
-        TwoYear two = new TwoYear();
-        ThreeYear three = new ThreeYear();
-        double monthlyPaymentForOneYear = one.calculateOne();
-        double monthlyPaymentForTwoYear = two.calculateTwo();
-        double monthlyPaymentForThreeYear = three.calculateThree();
-        System.out.printf(" При сумме кредита на 1 год. Ежемесячный платеж = %.0f", monthlyPaymentForOneYear);
-        System.out.printf(" При сумме кредита на 2 год. Ежемесячный платеж = %.0f", monthlyPaymentForTwoYear);
-        System.out.printf(" При сумме кредита на 3 год. Ежемесячный платеж = %.0f", monthlyPaymentForThreeYear);
+        CreditPaymentService service = new CreditPaymentService();
+        double monthlyRate = 9.99 / 12 / 100; // Месячная процентная ставка
+        double twelveMonths = service.calculate12(monthlyRate); // Расчёт ежемесячного платежа на 12 месяцев
+        double twentyFourMonths = service.calculate24(monthlyRate); // Расчёт ежемесячного платежа на 24 месяца
+        double thirtySixMonths = service.calculate36(monthlyRate); // Расчёт ежемесячного платежа на 36 месяцев
+        System.out.println("При сумме кредита 1000000 рублей. Сумма ежемесячного платежа составит:");
+        System.out.println("На один год: " +  twelveMonths);
+        System.out.println("На два года: " + twentyFourMonths);
+        System.out.println("На три года: " + thirtySixMonths);
     }
 }
